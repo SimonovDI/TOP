@@ -19,7 +19,7 @@ import re
 
 # Найти последовательность цифр, после которой идет ровно одно подчеркивание
 # txt = '12_34__86'
-# reg =r'(\d+)_\d'
+# reg =r'(\d+)_\d?'
 # a = re.findall(reg, txt)
 # print(a)
 
@@ -64,5 +64,23 @@ import re
 #         count +=1
 # print(count)
 
+
+
+# Работа с файлами
+
+# file = open('DZ','w')
+# pos1 = file.write('Hello ')
+# pos2 = file.write('World')
+# file.close()
+# with open('DZ','r') as file:
+#     s = file.read(5)
+#     z =file.read(6)
+#     s,z = z,s
+#     print(s,z)
+# file.close()
+# file = open('DZ','w+')
+# pos1 = file.write(s)
+# pos2 = file.write(z)
+# file.close()
 
 
