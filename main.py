@@ -84,3 +84,18 @@ import re
 # file.close()
 
 
+# Объеденить 2 файла в 1. Третий файл = Первый файл.Второй файл.
+
+# with open('file1.txt','r') as f, open('file2.txt','r') as m, open('file3.txt', 'w+') as t:
+#     text = f.readlines()
+#     text2 = m.readlines()
+#     text3 = ''.join((text + text2))
+#     t.write(text3)
+    
+
+
+
+
+        
+
+
