@@ -95,6 +95,10 @@ import re
 
 # ООП
 
+
+# Реализовать класс Книга.Необходимо хранить в полях класса название книги, год выпуска, издатель, жанр, автор, цену.
+
+
 # class Book:
 #     name = 'name'
 #     year = 'year'
@@ -166,6 +170,58 @@ import re
 # h1.set_price('100$')
 # h1.print_info()            
         
+
+# # Создать класс Reсtangle, описывающий прямоугольник. В классе должны быть все необходимые методы, а так же методы вычисления
+# # площади,периметра и гипотенузы и метод который рисует прямоуголник.
+# 
+# import math
+# class Reсtangle:
+#     def __init__(self,long,width):
+#         self.__long = self.__width = 0
+#         if Reсtangle.__check_value(long) and Reсtangle.__check_value(width):
+#             self.__long = long
+#             self.__width = width
+#             print('Длина прямоугольника: ',long)
+#             print('Ширина прямоугольника: ',width)
+#         else:
+#             print("Ошибка данных")
+#         
+#     def __check_value(z):
+#         if isinstance(z,int) or isinstance(z,float):
+#             return True
+#         return False
+# 
+#     def squre(self):
+#         self.s = self.__long * self. __width
+#         return self.s
+#         
+#     def perimetr(self):
+#         self.p = 2 * (self.__long + self.__width)
+#         return self.p
+#      
+#             
+#     def hypotenuse(self):
+#         hyp = self.__long ** 2 + self.__width ** 2
+#         self.hypoten = round(math.sqrt(hyp),2)
+#         return self.hypoten
+#             
+#         
+#     def image(self):
+#         for i in range(1,self.__long+1):
+#             for j in range(1,self.__width+1):
+#                 print('*', end = '')
+#             print()
+# 
+#         
+#         
+# a1 = Reсtangle('a',9)
+# print("Площадь прямоугольника: ", a1.squre())
+# print('Периметр равен: ', a1.perimetr())
+# print("Гипотенуза прямоугольника: ", a1.hypotenuse())
+# a1.image()
+        
+
+
 
 
 
