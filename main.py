@@ -259,7 +259,6 @@ import re
 # print('вызов методов: ', Area.get_count())
 
 
-
 # Создать класс для рассчета банковского депозита
 
 # class Account:
@@ -561,4 +560,165 @@ import re
 # print(acc.get_print_info())
 
 
+# Реализовать класс "Автомобиль". необходимо хранить в полях класса, название модели, год выпуска, производитель,
+# мощность двигателя, цвет, цена машины.Реализовать методы класса для ввода даных, вывода данных. реализовать доступ к
+# отдельным полям через методы класса.
 
+
+# import re
+#
+#
+# class Auto:
+#     def __init__(self, name, year, manufacture, power, color, price):
+#         self.name = name
+#         self.year = year
+#         self.manufacture = manufacture
+#         self.power = power
+#         self.color = color
+#         self.price = price
+#
+#     @property
+#     def name(self):
+#         return self.__name
+#
+#     @name.setter
+#     def name(self, name):
+#         self.verify_name(name)
+#         self.__name = name
+#
+#     @property
+#     def year(self):
+#         return self.__year
+#
+#     @year.setter
+#     def year(self, year):
+#         self.verify_year(year)
+#         self.__year = year
+#
+#     @property
+#     def manufacture(self):
+#         return self.__manufacture
+#
+#     @manufacture.setter
+#     def manufacture(self, manufacture):
+#         self.verify_manufacture(manufacture)
+#         self.__manufacture = manufacture
+#
+#     @property
+#     def power(self):
+#         return self.__power
+#
+#     @power.setter
+#     def power(self, power):
+#         self.verify_power(power)
+#         self.__power = power
+#
+#     @property
+#     def color(self):
+#         return self.__color
+#
+#     @color.setter
+#     def color(self, color):
+#         self.verify_color(color)
+#         self.__color = color
+#
+#     @property
+#     def price(self):
+#         return self.__price
+#
+#     @price.setter
+#     def price(self, price):
+#         self.verify_price(price)
+#         self.__price = price
+#
+#     @staticmethod
+#     def verify_name(name):
+#         if not isinstance(name, str):
+#             raise TypeError("name, Должно быть строкой")
+#         f = name.split()  # [X1]
+#         if len(f) != 1:
+#             raise TypeError("Неверный формат имени")
+#         letters = "".join(re.findall('[A-z0-9]', name))
+#         for s in f:
+#             if len(s.strip(letters)) != 0:
+#                 raise TypeError("В имени можно использовать только буквы и числа!")
+#
+#     @staticmethod
+#     def verify_year(year):
+#         if not isinstance(year, int):
+#             raise TypeError("year, должен быть числом")
+#
+#     @staticmethod
+#     def verify_manufacture(manufacture):
+#         if not isinstance(manufacture, str):
+#             raise TypeError("manufacture, Должно быть строкой")
+#
+#     @staticmethod
+#     def verify_power(power):
+#         if not isinstance(power, int):
+#             raise TypeError("Power, должно быть числом")
+#
+#     @staticmethod
+#     def verify_color(color):
+#         if not isinstance(color, str):
+#             raise TypeError("color, Должно быть строкой")
+#
+#     @staticmethod
+#     def verify_price(price):
+#         if not isinstance(price, int):
+#             raise TypeError("Price, должно быть числом")
+#
+#
+# p1 = Auto('X7', 1958, "BMW", 530, "white", 1706452)
+# p1.price = 123141
+# print(p1.price)
+
+
+# Создать базовый класс "Стол" и дочерние классы: Прямоугольные столы, квадратные и круглые столы. Через инициализатор
+# базового класса передавать размер поверхности стола: прямоугольный - ширина и длина, квадратный - ширина или длина
+# круглого - радиус. В дочерних классах реализовать метод вычисления площади поверхности стола.
+
+# class Table:  # Класс "Стол"
+#
+#     def __init__(self, width, length):
+#         self.width = width
+#         self.length = length
+#
+#
+# class Square(Table):        # Дочерний класс квадратный стол
+#
+#     def __init__(self, width, length):
+#         super().__init__(width, length)
+#
+#     def perimetr(self):
+#         if self.width == self.length:
+#             return self.width ** 2
+#         else:
+#             raise NotImplementedError("В дочернем классе Square() неверные данные")
+#
+#
+# class Rectangle(Table):     # Дочерний класс прямоугольный стол
+#
+#     def __init__(self, width, length):
+#         super().__init__(width, length)
+#
+#     def perimetr(self):
+#         return self.width * self.length
+#
+#
+# class Ring(Table):      # Дочерний класс круглый стол
+#
+#     def __init__(self, width, length=0):
+#         super().__init__(width, length)
+#
+#     def perimetr(self):
+#         return 3.14 * self.width
+#
+#
+# l = Rectangle(20, 10)
+# z = Square(20, 20)
+# x = Ring(20)
+#
+# print(z.perimetr())
+# print(l.perimetr())
+# print(round(x.perimetr(), 1))
