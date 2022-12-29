@@ -681,38 +681,41 @@ import re
 # class Table:  # Класс "Стол"
 #
 #     def __init__(self, width, length):
-#         self.width = width
-#         self.length = length
+#         self._width = width
+#         self._length = length
+#
+#     def perimetr(self):
+#         raise NotImplementedError("В дочернем классе отсутствует метод perimetr()")
 #
 #
-# class Square(Table):        # Дочерний класс квадратный стол
+# class Square(Table):  # Дочерний класс квадратный стол
 #
 #     def __init__(self, width, length):
 #         super().__init__(width, length)
 #
 #     def perimetr(self):
-#         if self.width == self.length:
-#             return self.width ** 2
+#         if self._width == self._length:
+#             return self._width ** 2
 #         else:
-#             raise NotImplementedError("В дочернем классе Square() неверные данные")
+#              raise NotImplementedError("В дочернем классе Square() неверные данные")
 #
 #
-# class Rectangle(Table):     # Дочерний класс прямоугольный стол
+# class Rectangle(Table):  # Дочерний класс прямоугольный стол
 #
 #     def __init__(self, width, length):
 #         super().__init__(width, length)
 #
 #     def perimetr(self):
-#         return self.width * self.length
+#         return self._width * self._length
 #
 #
-# class Ring(Table):      # Дочерний класс круглый стол
+# class Ring(Table):  # Дочерний класс круглый стол
 #
 #     def __init__(self, width, length=0):
 #         super().__init__(width, length)
 #
 #     def perimetr(self):
-#         return 3.14 * self.width
+#         return 3.14 * self._width
 #
 #
 # l = Rectangle(20, 10)
@@ -722,3 +725,32 @@ import re
 # print(z.perimetr())
 # print(l.perimetr())
 # print(round(x.perimetr(), 1))
+
+# Создать класс Student, который будет содержать имя и распечатывать информацию. А так же вложенный класс,
+# который будет содержать информацию о ноутбуке с техническими характеристиками модель, процессор и память.
+# Roman    => HP, i7, 16
+# Vladimir => HP, i7,16
+#
+# class Student:
+#
+#     def __init__(self, name, model, cpu, memory):
+#         self._name = name
+#         self.laptop = self.Laptop(model, cpu, memory)
+#
+#     def info(self):
+#         print(f"{self._name} => {lap._model} {lap._cpu} {lap._memory}")
+#
+#     class Laptop:
+#
+#         def __init__(self, model, cpu, memory):
+#             self._model = model
+#             self._cpu = cpu
+#             self._memory = memory
+#
+#
+# t = Student("Roman", "HP", "i7", 16)
+# v = Student("Vladimir", "Honor", 10, 25)
+# lap = t.laptop
+# t.info()
+# lap = v.laptop
+# v.info()
