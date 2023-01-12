@@ -1,6 +1,5 @@
 import re
 
-
 # tel = input('введите номер телефона: ')
 # reg = r'^(([+]?[7]\s(([0-9]{3})|\([0-9]{3}\))\s([0-9]{3})(\s|\-)[0-9]{2})(\s|\-)[0-9]{2})|[+]?([0-9]){11}'
 # math = re.fullmatch(reg,tel)
@@ -754,3 +753,52 @@ import re
 # t.info()
 # lap = v.laptop
 # v.info()
+
+# ****************************************************
+#                   2023 год
+# ****************************************************
+
+# Написать программу разведения котов и кошек, с предполагаемым количеством котят.
+# import random
+#
+# 
+# class Cat:
+#
+#     def __init__(self, name: str, age: int, get: str):
+#         if not isinstance(name, str):
+#             raise ValueError("Имя у кошки должно быть строкой")
+#         if not isinstance(age, int):
+#             raise ValueError("Возраст кошки должен быть числом")
+#         if not isinstance(get, str):
+#             raise ValueError("Гендер у кошки должен быть строкой")
+#
+#         self.name = name
+#         self.age = age
+#         self.get = get
+#
+#     def get_format(self):
+#         if self.kitty_age > 2:
+#             sum_kits = random.randint(2, 5)
+#             lst = ['Мужской', 'Женский']
+#             gender = random.choice(lst)
+#             print(f"У кошек родится {sum_kits} котенка, их пол будет {gender} ")
+#         else:
+#             raise ValueError("Возраст должен быть больше 2")
+#
+#     def __add__(self, other):
+#         if (self.get == 'm' or self.get == 'f') and (other.get == 'm' or other.get == 'f'):
+#             if self.get == other.get:
+#                 raise TypeError("Одинаковый пол животного")
+#             if not isinstance(other, Cat):
+#                 raise ValueError("Тип данных не принадлежит к классу Cat")
+#             if self.age <= 0 or other.age <= 0:
+#                 raise ValueError("Возраст должен быть больше 1")
+#             self.kitty_age = self.age + other.age
+#             return Cat.get_format(self)
+#         else:
+#             raise TypeError("Пол может быть только 'm' или 'f'")
+#
+#
+# c1 = Cat("Max", 3, 'm')
+# c2 = Cat("Blue", 1, 'f')
+# c3 = c1 + c2
