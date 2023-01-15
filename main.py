@@ -761,7 +761,7 @@ import re
 # Написать программу разведения котов и кошек, с предполагаемым количеством котят.
 # import random
 #
-# 
+#
 # class Cat:
 #
 #     def __init__(self, name: str, age: int, get: str):
@@ -802,3 +802,114 @@ import re
 # c1 = Cat("Max", 3, 'm')
 # c2 = Cat("Blue", 1, 'f')
 # c3 = c1 + c2
+
+
+# Создать класс Shape и три дочерних класса: Square, Rectangle, Triangle.
+# Родительский класс должен иметь абстрактные методы нахождения периметра, площади, рисования фигуры и вывода
+# информации. С помощью полиморфизма реализуйте выводы информации о дочерних фигурах.
+#
+# import math
+#
+#
+# class Shape:
+#     def __init__(self, color: str):
+#         if not isinstance(color, str):
+#             raise TypeError("Color должен быть строкой")
+#         self.color = color
+#
+#     def info(self):
+#         print(f'Цвет: {self.color}')
+#
+#     def perimetr(self):
+#         raise NotImplementedError("В дочернем классе должен быть определен метод perimetr")
+#
+#     def area(self):
+#         raise NotImplementedError("В дочернем классе должен быть определен метод area")
+#
+#     def image(self):
+#         raise NotImplementedError("В дочернем классе должен быть определен метод image")
+#
+#
+# class Square(Shape):
+#     def __init__(self, x, color):
+#         self.x = x
+#         super().__init__(color)
+#
+#     def perimetr(self):
+#         return 4 * self.x
+#
+#     def area(self):
+#         return self.x * self.x
+#
+#     def image(self):
+#         for i in range(1, self.x + 1):
+#             for j in range(1, self.x + 1):
+#                 print('*', end=' ')
+#             print()
+#
+#     def info(self):
+#         print(f"===Квадрат===\nСторона:", self.x)
+#         super().info()
+#         print(f"Площадь: {Square.area(self)}\nПериметр: {Square.perimetr(self)}")
+#         return Square.image(self)
+#
+#
+# class Rectangle(Shape):
+#     def __init__(self, x, y, color):
+#         self.x = x
+#         self.y = y
+#         super().__init__(color)
+#
+#     def perimetr(self):
+#         return 2 * (self.x + self.y)
+#
+#     def area(self):
+#         return self.x * self.y
+#
+#     def image(self):
+#         for i in range(1, self.x + 1):
+#             for j in range(1, self.y + 1):
+#                 print('*', end=' ')
+#             print()
+#
+#     def info(self):
+#         print(f"===Прямоугольник===\nДлина: {self.x}\nШирина: {self.y}")
+#         super().info()
+#         print(f"Площадь: {Rectangle.area(self)}\nПериметр: {Rectangle.perimetr(self)}")
+#         return Rectangle.image(self)
+#
+#
+# class Triangle(Shape):
+#     def __init__(self, x, y, z, color):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#         super().__init__(color)
+#
+#     def perimetr(self):
+#         return (self.x + self.y + self.z) / 2
+#
+#     def area(self):
+#         return round(math.sqrt(Triangle.perimetr(self) * (
+#                 (Triangle.perimetr(self) - self.x) * (Triangle.perimetr(self) - self.y) *
+#                 (Triangle.perimetr(self) - self.z))), 2)
+#
+#     def image(self):
+#         for i in range(self.y):
+#             print(' ' * (self.y - 1 - i) + '*' * (1 + i * 2))
+#
+#     def info(self):
+#         print(f"===Треугольник===\nСторона1: {self.x}\nСторона2: {self.y}\nСторона3: {self.z}")
+#         super().info()
+#         print(f"Площадь: {Triangle.area(self)}\nПериметр: {Triangle.perimetr(self)}")
+#         return Triangle.image(self)
+#
+#
+# c1 = Square(3, "red")
+# c2 = Rectangle(3, 7, "green")
+# c3 = Triangle(11, 6, 6, "yellow")
+# c1.info()
+# print()
+# c2.info()
+# print()
+# c3.info()
