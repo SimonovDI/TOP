@@ -1,5 +1,6 @@
 import re
 
+
 # tel = input('введите номер телефона: ')
 # reg = r'^(([+]?[7]\s(([0-9]{3})|\([0-9]{3}\))\s([0-9]{3})(\s|\-)[0-9]{2})(\s|\-)[0-9]{2})|[+]?([0-9]){11}'
 # math = re.fullmatch(reg,tel)
@@ -807,7 +808,7 @@ import re
 # Создать класс Shape и три дочерних класса: Square, Rectangle, Triangle.
 # Родительский класс должен иметь абстрактные методы нахождения периметра, площади, рисования фигуры и вывода
 # информации. С помощью полиморфизма реализуйте выводы информации о дочерних фигурах.
-#
+
 # import math
 #
 #
@@ -913,3 +914,122 @@ import re
 # c2.info()
 # print()
 # c3.info()
+#
+# n = int(input())
+
+
+# Задача от 17.01.2023
+# Создать класс Power который будет декорировать функцию. Функция возвращает результат умножения a = 2, b = 2, а класс
+# возводит их в степень которую принимает декоратор.
+
+# class Power:
+#     def __init__(self, degree):
+#         self.degree = degree
+#
+#     def __call__(self, fn):
+#         def wrap(a, b):
+#             print('Результат: ', (a * b) ** self.degree)
+#
+#         return wrap
+#
+#
+# @Power(3)
+# def func(a, b):
+#     print(a * b)
+#
+#
+# func(2, 2)
+
+
+# Создать класс "Треугольник", свойства - длина трех его сторон. Правильность создание его свойств должны проверятся
+# через дескриптор на ввод положительных целых числовых значений. Предусмотреть в классе методы проверки существования
+# треугольника.
+# ****************************************
+#        1й вариант решения
+# ***************************************
+# class Validate:
+#     @staticmethod
+#     def verify_coord(coord):
+#         if isinstance(coord, int):
+#             return coord
+#         else:
+#             raise TypeError(f"Координаты {coord} должны быть целыми числами")
+#
+#     def __set_name__(self, owner, name):
+#         self.name = name
+#
+#     def __get__(self, instance, owner):
+#         return getattr(instance, self.name)
+#
+#     def __set__(self, instance, value):
+#         self.verify_coord(value)
+#         setattr(instance, self.name, value)
+#
+#
+# class Triangle:
+#     x = Validate()
+#     y = Validate()
+#     z = Validate()
+#
+#     def __init__(self, x, y, z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#     def total(self):
+#         if (self.x + self.y) > self.z and (self.y + self.z) > self.x and (self.z + self.x) > self.y:
+#             return f"Треугольник со сторонами {self.x},{self.y},{self.z} - существует "
+#         else:
+#             return f"Треугольник со сторонами {self.x},{self.y},{self.z} - не существует "
+#
+#
+# t1 = Triangle(2, 5, 6)
+# t2 = Triangle(5, 2, 8)
+# t3 = Triangle(7, 3, 6)
+# print(t1.total())
+# print(t2.total())
+# print(t3.total())
+
+# ****************************************
+#        2й вариант решения
+# ***************************************
+# class Validate:
+#     @staticmethod
+#     def verify_coord(coord):
+#         if not isinstance(coord, int):
+#             raise TypeError(f"Координата {coord} должна быть целым числом")
+#
+#     def __set_name__(self, owner, name):
+#         self.name = " " + name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.name]
+#
+#     def __set__(self, instance, value):
+#         self.verify_coord(value)
+#         instance.__dict__[self.name] = value
+#
+#
+# class Triangle:
+#     x = Validate()
+#     y = Validate()
+#     z = Validate()
+#
+#     def __init__(self, x, y, z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#     def total(self):
+#         if (self.x + self.y) > self.z and (self.y + self.z) > self.x and (self.z + self.x) > self.y:
+#             return f"Треугольник со сторонами ({self.x},{self.y},{self.z}) - существует "
+#         else:
+#             return f"Треугольник со сторонами ({self.x},{self.y},{self.z}) - не существует "
+#
+#
+# t1 = Triangle(2, 5, 6)
+# t2 = Triangle(5, 2, 8)
+# t3 = Triangle(7, 3, 6)
+# print(t1.total())
+# print(t2.total())
+# print(t3.total())
