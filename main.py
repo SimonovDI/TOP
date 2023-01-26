@@ -1,6 +1,5 @@
 import re
 
-
 # tel = input('введите номер телефона: ')
 # reg = r'^(([+]?[7]\s(([0-9]{3})|\([0-9]{3}\))\s([0-9]{3})(\s|\-)[0-9]{2})(\s|\-)[0-9]{2})|[+]?([0-9]){11}'
 # math = re.fullmatch(reg,tel)
@@ -1033,3 +1032,37 @@ import re
 # print(t1.total())
 # print(t2.total())
 # print(t3.total())
+
+
+# Создать class , данные свойства class сохранить в json объект
+# import json
+#
+#
+# class Student:
+#
+#     def __init__(self, name, firstname, age, faculty):
+#         self.name = name
+#         self.firstname = firstname
+#         self.age = age
+#         self.faculty = faculty
+#
+#     def info(self):
+#         data_json = {
+#             'name': self.name,
+#             'firstname': self.firstname,
+#             'age': self.age,
+#             'faculty': self.faculty
+#         }
+#
+#         return data_json
+#
+#
+# p1 = Student('Denis', 'Simonov', 36, 'TOP')
+# data = p1.info()
+# with open("data_json.json", "w") as fw:
+#     json.dump(data, fw, indent=4)
+#
+#
+# with open("data_json.json", "r") as fw:
+#     data = json.load(fw)
+#     print(data)
