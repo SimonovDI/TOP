@@ -949,13 +949,13 @@ import re
 # class Validate:
 #     @staticmethod
 #     def verify_coord(coord):
-#         if isinstance(coord, int):
+#         if not isinstance(coord, int)
 #             return coord
 #         else:
 #             raise TypeError(f"Координаты {coord} должны быть целыми числами")
 #
 #     def __set_name__(self, owner, name):
-#         self.name = name
+#         self.name = " " + name
 #
 #     def __get__(self, instance, owner):
 #         return getattr(instance, self.name)
@@ -1066,3 +1066,50 @@ import re
 # with open("data_json.json", "r") as fw:
 #     data = json.load(fw)
 #     print(data)
+
+# *************************************************************************************
+#                             dz from 26.01.2023
+# *************************************************************************************
+# import json
+# from random import choice
+#
+#
+# def get_person():
+#     name = ''
+#     tel = ''
+#     keys = ''
+#
+#     letter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#
+#     while len(keys) != 10:
+#         keys += choice(nums)
+#
+#     while len(name) != 7:
+#         name += choice(letter)
+#
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#
+#     person = {
+#         keys: {
+#             "name": name,
+#             "tel": tel
+#         }
+#     }
+#     return person
+#
+#
+# def write_json(person_dict):
+#     try:
+#         data = json.load(open("persons.json"))
+#     except FileNotFoundError:
+#         data = []
+#
+#     data.append(person_dict)
+#     with open('persons.json', 'w') as f:
+#         json.dump(data, f, indent=2)
+#
+#
+# for i in range(5):
+#     write_json(get_person())
