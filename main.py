@@ -1,4 +1,4 @@
-import re
+# import re
 
 # tel = input('введите номер телефона: ')
 # reg = r'^(([+]?[7]\s(([0-9]{3})|\([0-9]{3}\))\s([0-9]{3})(\s|\-)[0-9]{2})(\s|\-)[0-9]{2})|[+]?([0-9]){11}'
@@ -1113,3 +1113,132 @@ import re
 #
 # for i in range(5):
 #     write_json(get_person())
+# **************************************************
+#       Dz from 02.02.2023
+# *************************************************
+# import csv
+#
+# with open('data2.csv', 'r') as file:
+#     reader = csv.reader(file)
+#
+#     for line in reader:
+#         print(line)
+#
+#
+# with open("my_data2", "w") as file:
+#     writer = csv.writer(file, delimiter=";", lineterminator="\r")
+#     writer.writerow(["hostname", "vendor", "model", "location"])
+#     writer.writerow(["sw1", "Cisco", "3750", "london"])
+#     writer.writerow(["sw2", "Cisco", "3850", "Liverpool"])
+#     writer.writerow(["sw3", "Cisco", "3650", "Madrid"])
+#     writer.writerow(["sw4", "Cisco", "3980", "Liverpool"])
+#
+# with open("my_data2", "r") as file:
+#     reader = csv.reader(file)
+#
+#     for line in reader:
+#         print(line)
+
+# **************************************************
+#       Dz from 31.01.2023
+# *************************************************
+
+# import json
+# dic = {}
+#
+# class Group:
+#     def __init__(self, country, city):
+#         self.country = country
+#         self.city = city
+#
+#     def add_info(self):  # добавляем информацию в словарь
+#         dic[self.country] = self.city
+#
+#     def del_info(self, country):  # Удаление значения
+#         dic.pop(self.country)
+#         print(dic)
+#
+#     def redact_info(self, a, b):  # Редактирование значения
+#         dic.pop(self.country)
+#         dic[a] = b
+#         return dic
+#
+#     @staticmethod
+#     def print_info():  # просмотр словаря
+#         print(dic)
+#
+#
+# st1 = Group("Россия", "Москва")
+# st1.add_info()
+# st2 = Group("США", "Вашингтон")
+# st2.add_info()
+# Group.print_info()
+# ***************************************************************************
+import json
+
+dic = {}
+
+
+def add_count(a, b):
+    dic[a] = b  # Присвоение значений
+
+
+def del_count(a):  # Удаление данных
+    del dic[a]
+
+
+def change(a, b):  # изменение данных
+    dic[a] = b
+    print(dic)
+
+
+def poisk(a):  # поиск данных
+    load()
+    print(dic[a])
+
+
+def print_info():  # просмотр данных
+    print(dic)
+
+
+def add_push():
+    with open("country.json", "w", encoding='utf-8') as fw:
+        fw.write(json.dumps(dic))
+
+
+def load():
+    with open("country.json", "r") as fw:
+        dic = json.load(fw)
+        print(dic)
+
+
+print('*' * 50)
+print(
+    f'Выбор действия: \n1-Добавление данных\n2-Удаление данных\n3-Поиск данных\n4-Редактирование данных\n5-Просмотр данных\n6-Завершение работы\n7-Сохранить данные')
+n = int(input("Введите цифру: "))
+while n != 6:
+    if n == 1:
+        a = input('Введите страну: ')
+        b = input('Введите столицу: ')
+        add_count(a, b)
+        add_push()
+    if n == 2:
+        a = input('Введите страну которую хотите удалить: ')
+        del_count(a)
+
+    if n == 3:
+        a = input('Введите страну которую хотите найти: ')
+        poisk(a)
+
+    if n == 4:
+        a = input('Введите страну у которой хотите изменить столицу: ')
+        b = input('Введите столицу: ')
+        change(a, b)
+
+    if n == 5:
+        load()
+
+    if n == 7:
+        add_push()
+
+    n = int(input("Введите цифру: "))
