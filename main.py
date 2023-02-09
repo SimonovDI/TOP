@@ -1,4 +1,5 @@
 # import re
+import csv
 
 # tel = input('введите номер телефона: ')
 # reg = r'^(([+]?[7]\s(([0-9]{3})|\([0-9]{3}\))\s([0-9]{3})(\s|\-)[0-9]{2})(\s|\-)[0-9]{2})|[+]?([0-9]){11}'
@@ -1174,71 +1175,126 @@
 # st2.add_info()
 # Group.print_info()
 # ***************************************************************************
-import json
-
-dic = {}
-
-
-def add_count(a, b):
-    dic[a] = b  # Присвоение значений
-
-
-def del_count(a):  # Удаление данных
-    del dic[a]
-
-
-def change(a, b):  # изменение данных
-    dic[a] = b
-    print(dic)
-
-
-def poisk(a):  # поиск данных
-    load()
-    print(dic[a])
-
-
-def print_info():  # просмотр данных
-    print(dic)
-
-
-def add_push():
-    with open("country.json", "w", encoding='utf-8') as fw:
-        fw.write(json.dumps(dic))
-
-
-def load():
-    with open("country.json", "r") as fw:
-        dic = json.load(fw)
-        print(dic)
-
-
-print('*' * 50)
-print(
-    f'Выбор действия: \n1-Добавление данных\n2-Удаление данных\n3-Поиск данных\n4-Редактирование данных\n5-Просмотр данных\n6-Завершение работы\n7-Сохранить данные')
-n = int(input("Введите цифру: "))
-while n != 6:
-    if n == 1:
-        a = input('Введите страну: ')
-        b = input('Введите столицу: ')
-        add_count(a, b)
-        add_push()
-    if n == 2:
-        a = input('Введите страну которую хотите удалить: ')
-        del_count(a)
-
-    if n == 3:
-        a = input('Введите страну которую хотите найти: ')
-        poisk(a)
-
-    if n == 4:
-        a = input('Введите страну у которой хотите изменить столицу: ')
-        b = input('Введите столицу: ')
-        change(a, b)
-
-    if n == 5:
-        load()
-
-    if n == 7:
-        add_push()
-
-    n = int(input("Введите цифру: "))
+# import json
+#
+# dic = {}
+#
+#
+# def add_count(a, b):
+#     dic[a] = b  # Присвоение значений
+#
+#
+# def del_count(a):  # Удаление данных
+#     del dic[a]
+#
+#
+# def change(a, b):  # изменение данных
+#     dic[a] = b
+#     print(dic)
+#
+#
+# def poisk(a):  # поиск данных
+#     load()
+#     print(dic[a])
+#
+#
+# def print_info():  # просмотр данных
+#     print(dic)
+#
+#
+# def add_push():
+#     with open("country.json", "w", encoding='utf-8') as fw:
+#         fw.write(json.dumps(dic))
+#
+#
+# def load():
+#     with open("country.json", "r") as fw:
+#         dic = json.load(fw)
+#         print(dic)
+#
+#
+# print('*' * 50)
+# print(
+#     f'Выбор действия: \n1-Добавление данных\n2-Удаление данных\n3-Поиск данных\n4-Редактирование данных\n5-Просмотр данных\n6-Завершение работы\n7-Сохранить данные')
+# n = int(input("Введите цифру: "))
+# while n != 6:
+#     if n == 1:
+#         a = input('Введите страну: ')
+#         b = input('Введите столицу: ')
+#         add_count(a, b)
+#         add_push()
+#     if n == 2:
+#         a = input('Введите страну которую хотите удалить: ')
+#         del_count(a)
+#
+#     if n == 3:
+#         a = input('Введите страну которую хотите найти: ')
+#         poisk(a)
+#
+#     if n == 4:
+#         a = input('Введите страну у которой хотите изменить столицу: ')
+#         b = input('Введите столицу: ')
+#         change(a, b)
+#
+#     if n == 5:
+#         load()
+#
+#     if n == 7:
+#         add_push()
+#
+#     n = int(input("Введите цифру: "))
+# *************************************************************************************************************
+#               Парсинг любой интернет страницы, сохранить данные в формате csv
+# **************************************************************************************************************
+# import requests
+# from bs4 import BeautifulSoup
+# import csv
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def write_csv(data):
+#     with open("garshinka.csv", "a") as file:
+#         writer = csv.writer(file, lineterminator="\r", delimiter=';')
+#         writer.writerow((data['url'], data["sort"]))
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     p1 = soup.find_all("div", class_="fp-list")[0]
+#     items = p1.find_all("div", "fp-list-item")
+#
+#     for i in items:
+#         item = i.find("a", class_="fp-item fp-item--2").get("href")
+#         sort = i.find("div", class_="item").text.strip()
+#         urls = (f"www.garshinka.ru" + item)
+#         data = {'url': urls, 'sort': sort}
+#         write_csv(data)
+#
+#
+# def main():
+#     """Парсинг ссылок главной страницы сайт https://www.garshinka.ru/"""
+#     url = "https://www.garshinka.ru/"
+#     headers = {
+#         "accept": "*/*",
+#         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+#     }
+#     get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
+#
+# # Вывод в csv файле:
+# # www.garshinka.ru/catalog/1568?from=main_1	Саженцы роз
+# # www.garshinka.ru/catalog/491?from=main_2	Цветы многолетние
+# # www.garshinka.ru/catalog/622?from=main_3	Декоративные кустарники и деревья
+# # www.garshinka.ru/catalog/klematisy?from=main_4	Клематисы
+# # www.garshinka.ru/catalog/1581?from=main_5	Злаки и декоративные травы
+# # www.garshinka.ru/catalog/1570?from=main_6	Хвойные растения
+# # www.garshinka.ru/catalog/6339?from=main_7	Живые изгороди
+# # www.garshinka.ru/catalog/440?from=main_8	Лекарственные и пряные травы
+# # www.garshinka.ru/catalog/1569?from=main_9	Плодовые растения
