@@ -11,23 +11,109 @@ REM - ремарка, примечание, пояснение
 =====================================
 
 1. В какие города фирма поставляет товар.
+	SELECT CITY2
+	FROM ZAKAZ
+	ORDER BY CITY2 
+
 2. В каких городах проживают заказчики.
+	SELECT CITY
+	FROM ZAKAZ
+	ORDER BY CITY 
+
 3. Какие заказчики обслуживаются менеджером с номером 1005.
+	SELECT NAME
+	FROM ZAKAZ
+	WHERE KOD='1005'
+
 4. Вывести только тех заказчиков, рейтинг которых более 380.
+	SELECT NAME
+	FROM ZAKAZ
+	WHERE RATING >= 380
+
 5. Определите тех заказчиков в ремарках, о которых ничего не сказано.
+	SELECT NAME
+	FROM ZAKAZ
+	WHERE REM IS NULL
+
 6. Выведите коды тех продавцов, которые имеют сумму заказа более 4000.
+	SELECT KOD
+	FROM ZAKAZ
+	WHERE SUM > 4000
+
 7. Вывести тех заказчиков, сумма заказа которых менее 1000 и они не живут в Иркутске.
+	SELECT NAME
+	FROM ZAKAZ
+	WHERE SUM <1000 and CITY !='Иркутск'
+
 8. Вывести всех заказчиков, рейтинг которых от 100 до 270.
+	SELECT NAME
+	FROM ZAKAZ
+	WHERE RATING >=100 and RATING <= 270
+
 9. Выведите фамилии, код, город проживания, тех заказчиков, которые поставляют товар не в тот город, в котором они проживают.
+	SELECT CNUM,NAME,CITY
+	FROM ZAKAZ
+	WHERE CITY != CITY2
+
 10. Вывести код  всех продавцов рейтинг заказчиков, которых менее 200 или больше 350.
+	SELECT KOD
+	FROM ZAKAZ
+	WHERE RATING < 200 OR RATING >=350
+	ORDER BY KOD 
+
 11. Вывести фамилии и товар всех заказчиков, которые заказали обеденные столы.
+	SELECT NAME,PROD
+	FROM ZAKAZ
+	WHERE PROD = 'столы обеденные'
+
 12. Вывести фамилии заказчиков, в состав которых входит две буквы а и более.
+	SELECT NAME
+	FROM ZAKAZ
+	WHERE NAME LIKE '%а%а%' OR NAME LIKE '%А%а%'
+
 13. Определите коды тех продавцов, фамилии заказчиков которых начинаются на К (вывести фамилию заказчика и номер продавца).
+	SELECT KOD,NAME
+	FROM ZAKAZ
+	WHERE NAME LIKE 'К%'
+
 14. Определите коды продавцов, которые продают стулья в Химках.
+	SELECT KOD
+	FROM ZAKAZ
+	WHERE Prod LIKE 'стулья' AND CITY2 LIKE 'Химки'
+	ORDER BY KOD ASC 
+
 15. Вывести всех заказчиков, которые проживают в Химках и продают товар там же, при этом сумма их заказа от 1000 до 1750.
+	SELECT NAME
+	FROM ZAKAZ
+	WHERE (CITY LIKE 'Химки' and CITY2 LIKE 'Химки') AND SUM BETWEEN 1000 AND 1750
+	
 16. Определить коды всех продавцов, которые не продают сейфы.
+	SELECT DISTINCT KOD
+	FROM ZAKAZ
+	WHERE Prod !='сейфы'
+	ORDER BY KOD ASC
+
 17. Выведите список заказанных диванов на сумму большую 4000.
+	SELECT CITY2,Prod
+	FROM ZAKAZ
+	WHERE Prod ='диваны' AND SUM > 4000
+
 18. Выведите фамилии тех заказчиков, которые купили стульев на сумму большую 1200.
+	SELECT NAME,SUM
+	FROM ZAKAZ
+	WHERE Prod LIKE 'стулья' OR Prod LIKE 'стулья для офиса' AND SUM > 1200
+	
 19. Определите фамилии тех продавцов, которые не живут в Иркутске и имеют рейтинг менее 200 пунктов.
+	SELECT NAME,CITY
+	FROM ZAKAZ
+	WHERE KOD !='Иркутск' AND RATING < 200
+
 20. Написать запрос, который выводит фамилии заказчиков, которые имеют льготы на доставку.
+	SELECT NAME
+	FROM ZAKAZ
+	WHERE REM LIKE 'льготная доставка'
+
 21. Выведите фамилии продавцов, сумма заказа которых превышает 14000 тысяч и живут они не в Москве или Липецке.
+	SELECT NAME, CITY
+	FROM ZAKAZ
+	WHERE (CITY NOT IN ('Липецк','Москва')) AND SUM > 14000 
