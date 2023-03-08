@@ -1246,47 +1246,47 @@ import csv
 # *************************************************************************************************************
 #               Парсинг любой интернет страницы, сохранить данные в формате csv
 # **************************************************************************************************************
-import requests
-from bs4 import BeautifulSoup
-import csv
-
-
-def get_html(url):
-    r = requests.get(url)
-    return r.text
-
-
-def write_csv(data):
-    with open("garshinka.csv", "a") as file:
-        writer = csv.writer(file, lineterminator="\r", delimiter=';')
-        writer.writerow((data['url'], data["sort"]))
-
-
-def get_data(html):
-    soup = BeautifulSoup(html, "lxml")
-    p1 = soup.find_all("div", class_="fp-list")[0]
-    items = p1.find_all("div", "fp-list-item")
-
-    for i in items:
-        item = i.find("a", class_="fp-item fp-item--2").get("href")
-        sort = i.find("div", class_="item").text.strip()
-        urls = (f"www.garshinka.ru" + item)
-        data = {'url': urls, 'sort': sort}
-        write_csv(data)
-
-
-def main():
-    """Парсинг ссылок на главной странице сайт https://www.garshinka.ru/"""
-    url = "https://www.garshinka.ru/"
-    headers = {
-        "accept": "*/*",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
-    }
-    get_data(get_html(url))
-
-
-if __name__ == '__main__':
-    main()
+# import requests
+# from bs4 import BeautifulSoup
+# import csv
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def write_csv(data):
+#     with open("garshinka.csv", "a") as file:
+#         writer = csv.writer(file, lineterminator="\r", delimiter=';')
+#         writer.writerow((data['url'], data["sort"]))
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     p1 = soup.find_all("div", class_="fp-list")[0]
+#     items = p1.find_all("div", "fp-list-item")
+#
+#     for i in items:
+#         item = i.find("a", class_="fp-item fp-item--2").get("href")
+#         sort = i.find("div", class_="item").text.strip()
+#         urls = (f"www.garshinka.ru" + item)
+#         data = {'url': urls, 'sort': sort}
+#         write_csv(data)
+#
+#
+# def main():
+#     """Парсинг ссылок на главной странице сайт https://www.garshinka.ru/"""
+#     url = "https://www.garshinka.ru/"
+#     headers = {
+#         "accept": "*/*",
+#         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+#     }
+#     get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
 
 
 #
@@ -1326,3 +1326,17 @@ if __name__ == '__main__':
 #     def wait_user_answer(self):
 #         user_answer = input("Выберите вариант действия: ")
 #         return user_answer
+
+# *************************************************************************************************************
+#               DZ 2.03.2023
+# *************************************************************************************************************
+from jinja2 import Environment, FileSystemLoader
+
+file_loader = FileSystemLoader('DZ_job')
+env = Environment(loader=file_loader)
+
+tm = env.get_template("main.html")
+msg = tm.render(title='Моё скромное домашнее задание', h1='Меленькая страница с домашним заданием!!!',
+                p='Домашняя работа выполнена! =)')
+
+print(msg)
