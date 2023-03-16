@@ -1,0 +1,41 @@
+body{
+    background: lightyellow;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.menu{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    background: orange;
+    padding: 20px;
+    margin-top: 0;
+}
+
+.content{
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.flash{
+    padding: 10px;
+}
+
+.flash.success{
+    border: 1px solid #21BD56;
+    background: #AEFFC5;
+}
+
+.flash.error{
+    border: 1px solid #FF4343;
+    background: #FF9C9C;
+}
+
+.menu a{
+    font-weight: bold;
+    color:brown;
+}
